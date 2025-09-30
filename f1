@@ -4,5 +4,9 @@ hello 2
 hello 
 hello 3
 
+<<<<<<< HEAD
 add 1
 add 2
+=======
+hello 5
+>>>>>>> myb
