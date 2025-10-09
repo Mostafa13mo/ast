@@ -8,7 +8,7 @@ pipeline {
                 sh 'echo "Running shell command..."'
             }
         }
-        stage('Hello') {
+        stage('Hello2') {
             steps {
                npm -v
             }
