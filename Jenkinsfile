@@ -1,35 +1,22 @@
-pipeline{
-agent any 
-stages {
-    stage ("first com")
-    {
-    steps {
-    sh """
-     npm -v 
+pipeline {
+    agent any
 
-     """
+    stages {
+        stage('first com') {
+            steps {
+                sh 'npm -v'
+            }
+        }
 
+        stage('second') {
+            steps {
+                sh 'echo "logout"'
+            }
+        }
     }
-
-  }
-    stage ("second")
-    {
-    steps {
-    sh """
-    echo "logout"
-
-     """
-
-    }
-
-  }
 }
 
 
 
 
 
-
-
-
-}
