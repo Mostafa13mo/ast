@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Hello2') {
             steps {
-               npm -v
+              sh 'npm -v'
             }
         }
     }
