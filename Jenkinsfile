@@ -1,22 +1,12 @@
 pipeline {
     agent any
-
     stages {
-        stage('first com') {
+        stage('Test') {
             steps {
-                sh 'npm -v'
-            }
-        }
-
-        stage('second') {
-            steps {
-                sh 'echo "logout"'
+                echo 'Pipeline is working!'
+                sh 'echo "npm version:" && npm -v'
             }
         }
     }
 }
-
-
-
-
 
