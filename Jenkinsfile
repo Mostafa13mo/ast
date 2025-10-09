@@ -5,7 +5,7 @@ stages {
     {
     steps {
     sh """
-    echo "login to in"
+    npm -v 
 
      """
 
