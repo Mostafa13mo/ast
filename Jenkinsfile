@@ -5,7 +5,7 @@ stages {
     {
     steps {
     sh """
-    npm -v 
+     npm -v 
 
      """
 
