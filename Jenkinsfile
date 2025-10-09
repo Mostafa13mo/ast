@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo 'Hello from Jenkins pipeline!'
+                echo '✅ Pipeline works perfectly!'
+                sh 'echo "This is running on the Jenkins agent"'
             }
         }
     }
