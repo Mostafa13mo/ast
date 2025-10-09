@@ -3,8 +3,13 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo '✅ Pipeline works perfectly!'
-                sh 'echo "This is running on the Jenkins agent"'
+                echo '✅ Jenkinsfile is being executed successfully!'
+                sh 'echo "Running shell command..."'
+            }
+        }
+        stage('List files') {
+            steps {
+                sh 'pwd && ls -la'
             }
         }
     }
