@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools{
-        nodeJs 'nodeJs 24.10.0'
+        nodejs 'nodeJs 24.10.0'
     }
     stages {
         stage('Hello') {
