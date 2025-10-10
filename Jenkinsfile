@@ -11,7 +11,7 @@ pipeline {
                 sh 'echo "Running shell command..."'
             }
         }
-        stage('Hello2') {
+        stage('npm build stage') {
             steps {
               sh 'npm -v'
             }
