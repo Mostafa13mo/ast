@@ -4,6 +4,15 @@ pipeline {
         nodejs 'node 24.10.0'
     }
     stages {
+          stage('npm build stage') {
+            steps {
+              sh """
+                    pwd
+                    ls -la
+                    find . -name "Dockerfile"
+                """
+            }
+        }
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/Mostafa13mo/ast.git'
