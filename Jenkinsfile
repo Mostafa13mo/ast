@@ -1,8 +1,8 @@
 pipeline {
     agent any
     
-    environment {
-        DOCKER_BUILDKIT = '1'
+  //  environment {
+  //      DOCKER_BUILDKIT = '1'
     }
     
     tools {
