@@ -33,6 +33,7 @@ pipeline {
         stage('docker build') {
             steps {
               sh """
+                  cd /var/jenkins_home/workspace/test
                   docker build -t docker.io/mostafa137/web-image2 .
               """
             }
