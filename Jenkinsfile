@@ -13,11 +13,24 @@ pipeline {
                 """
             }
         }
+        stage('Verify Dockerfile') {
+            steps {
+                sh  """
+                    echo "=== Dockerfile content ==="
+                    cat Dockerfile
+                    echo "=== Dockerfile details ==="
+                    file Dockerfile
+                    stat Dockerfile
+                """
+            }
+        }
+
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/Mostafa13mo/ast.git'
             }
         }
+        
         stage('Hello') {
             steps {
                 echo 'DEBUG: this is the updated Jenkinsfile'
