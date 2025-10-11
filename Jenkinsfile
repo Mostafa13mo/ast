@@ -16,5 +16,20 @@ pipeline {
               sh 'npm -v'
             }
         }
+        stage('docker build') {
+            steps {
+              sh """
+                  docker build docker.io/mostafa137/
+              """
+            }
+        }
+        stage('docker push') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'mycrid', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) 
+              sh """
+                 docker login -u $USERNAME -p $PASSWORD
+              """
+            }
+        }    
     }
 }
