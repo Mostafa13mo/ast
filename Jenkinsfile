@@ -4,7 +4,7 @@ pipeline {
         nodejs 'node 24.10.0'
     }
     stages {
-          stage('pwd stage') {
+        stage('pwd stage') {
             steps {
               sh """
                     pwd
