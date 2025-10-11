@@ -3,7 +3,7 @@ pipeline {
     
   //  environment {
   //      DOCKER_BUILDKIT = '1'
-    }
+   // }
     
     tools {
         nodejs 'node 24.10.0'
