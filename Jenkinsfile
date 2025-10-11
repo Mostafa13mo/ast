@@ -4,6 +4,11 @@ pipeline {
         nodejs 'node 24.10.0'
     }
     stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Mostafa13mo/ast.git'
+            }
+        }
         stage('Hello') {
             steps {
                 echo 'DEBUG: this is the updated Jenkinsfile'
