@@ -15,6 +15,20 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Mostafa13mo/ast.git'
             }
         }
+        stage('Debug - List Files') {
+            steps {
+                sh '''
+                    echo "=== Current directory ==="
+                    pwd
+                    echo "=== All files ==="
+                    ls -la
+                    echo "=== Git status ==="
+                    git status
+                    echo "=== Git log ==="
+                    git log -1 --oneline
+                '''
+            }
+        }
         
         stage('Verify Dockerfile') {
             steps {
