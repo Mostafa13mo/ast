@@ -19,7 +19,7 @@ pipeline {
         stage('docker build') {
             steps {
               sh """
-                  docker build docker.io/mostafa137/web-image
+                  docker build -t docker.io/mostafa137/web-image
               """
             }
         }
