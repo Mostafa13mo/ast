@@ -34,7 +34,7 @@ pipeline {
             steps {
               sh """
                   cd /var/jenkins_home/workspace/test
-                  docker build -t docker.io/mostafa137/web-image2 .
+                  docker build --no-cache -t docker.io/mostafa137/web-image2 .
               """
             }
         }
