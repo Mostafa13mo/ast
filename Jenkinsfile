@@ -46,7 +46,7 @@ pipeline {
         stage('docker build') {
             steps {
               sh """
-                  cd /var/jenkins_home/workspace/test
+                  export DOCKER_BUILDKIT=1
                   docker build --no-cache -t docker.io/mostafa137/web-image2 .
               """
             }
