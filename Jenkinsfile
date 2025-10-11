@@ -66,7 +66,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'mycrid', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh """
-                        docker login -u \$USERNAME -p \$PASSWORD
+                        echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
                         docker push docker.io/mostafa137/web-image2
                     """
                 }
