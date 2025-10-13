@@ -74,7 +74,7 @@ pipeline {
         }   
         stage('deploy') {
             steps {
-               sshagent (credentials: ['deploy-key']) {
+               sshagent(credentials: ['credent']) {
                     sh """
                       ssh -o StrictHostKeyChecking=no ubuntu@10.0.2.15 '
                                 touch file50
