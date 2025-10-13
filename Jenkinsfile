@@ -75,11 +75,9 @@ pipeline {
         stage('deploy') {
             steps {
                sshagent(credentials: ['credent']) {
-                    sh """
-                      ssh -o StrictHostKeyChecking=no ubuntu@10.0.2.15 '
-                                touch file50
-                                '
-                    """
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@10.0.2.15 "uptime" '
+
+                 
                 }
             }
         }    
