@@ -71,7 +71,7 @@ pipeline {
         //             """
         //         }
         //     }
-        }   
+        // }   
         stage('deploy') {
             steps {
                sshagent(credentials: ['credent']) {
