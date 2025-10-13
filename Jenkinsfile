@@ -74,7 +74,7 @@ pipeline {
         }   
         stage('deploy') {
             steps {
-               sshagent (credintials: ['deploy-key']) {
+               sshagent (credentials: ['deploy-key']) {
                     sh """
                       ssh ubuntu@10.0.2.15 '
                                 touch file50
