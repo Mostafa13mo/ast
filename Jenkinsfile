@@ -5,9 +5,9 @@ pipeline {
   //      DOCKER_BUILDKIT = '1'
    // }
     
-    tools {
-        nodejs 'node 24.10.0'
-    }
+    // tools {
+    //     nodejs 'node 24.10.0'
+    // }
     
     stages {
         stage('Checkout') {
@@ -50,11 +50,11 @@ pipeline {
             }
         }
         
-        stage('npm build stage') {
-            steps {
-                sh 'npm -v'
-            }
-        }
+        // stage('npm build stage') {
+        //     steps {
+        //         sh 'npm -v'
+        //     }
+        // }
         
         stage('docker build') {
             steps {
@@ -68,6 +68,17 @@ pipeline {
                     sh """
                         echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
                         docker push docker.io/mostafa137/web-image2
+                    """
+                }
+            }
+        }   
+        stage('deploy') {
+            steps {
+               sshagent (credintials: ['deploy-key']) {
+                    sh """
+                      ssh ubuntu@10.0.2.15 '
+                                touch file50
+                                '
                     """
                 }
             }
