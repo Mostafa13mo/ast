@@ -56,21 +56,21 @@ pipeline {
         //     }
         // }
         
-        stage('docker build') {
-            steps {
-                sh 'docker build -t docker.io/mostafa137/web-image2 .'
-            }
-        }
+        // stage('docker build') {
+        //     steps {
+        //         sh 'docker build -t docker.io/mostafa137/web-image2 .'
+        //     }
+        // }
         
-        stage('docker push') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'mycrid', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh """
-                        echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
-                        docker push docker.io/mostafa137/web-image2
-                    """
-                }
-            }
+        // stage('docker push') {
+        //     steps {
+        //         withCredentials([usernamePassword(credentialsId: 'mycrid', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        //             sh """
+        //                 echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
+        //                 docker push docker.io/mostafa137/web-image2
+        //             """
+        //         }
+        //     }
         }   
         stage('deploy') {
             steps {
