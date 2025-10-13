@@ -76,7 +76,7 @@ pipeline {
             steps {
                sshagent (credentials: ['deploy-key']) {
                     sh """
-                      ssh ubuntu@10.0.2.15 '
+                      ssh -o StrictHostKeyChecking=no ubuntu@10.0.2.15 '
                                 touch file50
                                 '
                     """
