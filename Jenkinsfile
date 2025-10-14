@@ -56,30 +56,37 @@ pipeline {
         //     }
         // }
         
-        // stage('docker build') {
-        //     steps {
-        //         sh 'docker build -t docker.io/mostafa137/web-image2 .'
-        //     }
-        // }
+        stage('docker build') {
+            steps {
+                sh 'docker build -t docker.io/mostafa137/web-image2 .'
+            }
+        }
         
-        // stage('docker push') {
-        //     steps {
-        //         withCredentials([usernamePassword(credentialsId: 'mycrid', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-        //             sh """
-        //                 echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
-        //                 docker push docker.io/mostafa137/web-image2
-        //             """
-        //         }
-        //     }
-        // }   
+        stage('docker push') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'mycrid', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh """
+                        echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
+                        docker push docker.io/mostafa137/web-image2
+                    """
+                }
+            }
+        }   
         stage('deploy') {
             steps {
+               withCredentials([usernamePassword(credentialsId: 'mycrid', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                sshagent(credentials: ['credent']) {
-                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@10.0.2.15 "uptime"'
+                     sh """
+                         ssh -o StrictHostKeyChecking=no ubuntu@10.0.2.15 '
+                          echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
+                          docker run  --name deploy -d -p 80:80 docker.io/mostafa137/web-image2 
+                        '
+                      """  
 
                  
                 }
             }
         }    
-    }
+      }
+    }    
 }
